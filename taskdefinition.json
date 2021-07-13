@@ -1,0 +1,38 @@
+{
+    "family": "hello-world-ecr",
+    "containerDefinitions": [
+        {
+            "logConfiguration": {
+                "logDriver": "awslogs",
+                "options": {
+                    "awslogs-group": "/ecs/hello-wold-ecr",
+                    "awslogs-region": "ap-south-1",
+                    "awslogs-stream-prefix": "ecs"
+                }
+            },
+
+            "portMappings": [
+                {
+                    "containerPort": 8080,
+                    "protocol":"tcp",
+                    "hostPort": 8080
+                }
+            ],
+
+            "image": "682840783047.dkr.ecr.ap-south-1.amazonaws.com/hello-world:latest",
+            "name": "hello-world",
+            "cpu": 0,
+            "essential": true,
+            "memory": 1024
+        }
+    ],
+    "requiresCompatibilities": [
+        "FARGATE"
+    ],
+    "cpu":"512",
+    "memory":"1024",
+    "networkMode": "awsvpc",
+    "executionRoleArn": "arn:aws:iam::682840783047:role/ecsTaskExecutionRole"
+        
+    
+}
